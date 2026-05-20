@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invoice Email</title>
     <style>
         body {
@@ -11,7 +11,6 @@
             margin: 0;
             padding: 0;
         }
-
         .container {
             max-width: 600px;
             margin: 30px auto;
@@ -20,79 +19,66 @@
             overflow: hidden;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
-
         .header {
-            background-color: #10B981;
-            /* Emerald 500 */
+            background-color: #10b981;
             color: #ffffff;
-            padding: 20px;
-            text-align: center;
-            font-size: 24px;
-        }
-
-        .content {
             padding: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+        .content {
+            padding: 40px 30px;
             color: #333333;
             line-height: 1.6;
         }
-
-        .invoice-box {
-            border: 1px solid #e0e0e0;
+        .invoice-details {
+            background-color: #f8f9fa;
             padding: 20px;
-            border-radius: 5px;
-            background-color: #fafafa;
-            margin-top: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
         }
-
+        .invoice-details p {
+            margin: 10px 0;
+        }
         .button {
             display: inline-block;
-            background-color: #10B981;
+            background-color: #10b981;
             color: #ffffff;
-            padding: 12px 25px;
+            padding: 12px 30px;
             border-radius: 5px;
             text-decoration: none;
             margin-top: 20px;
-            font-weight: bold;
         }
-
         .footer {
-            padding: 15px;
+            padding: 20px;
             font-size: 12px;
             color: #888888;
             text-align: center;
-            background-color: #f0f0f0;
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                margin: 15px;
-            }
-
-            .content {
-                padding: 20px;
-            }
+            background-color: #f8f9fa;
         }
     </style>
 </head>
-
 <body>
     <div class="container">
         <div class="header">
-            Your Order Invoice
+            <h1>Invoice</h1>
         </div>
         <div class="content">
-            <h2>Invoice for Order #{{ $order->id }}</h2>
-            <div class="invoice-box">
+            <h2>Order #{{ $order->id }}</h2>
+            <div class="invoice-details">
                 <p><strong>Order ID:</strong> {{ $order->id }}</p>
-                <p><strong>Amount:</strong> ₹{{ $order->total }}</p>
-                <p>Thank you for your purchase! Your order will be processed shortly.</p>
+                <p><strong>Total Amount:</strong> ${{ number_format($order->total, 2) }}</p>
+                <p><strong>Status:</strong> Paid</p>
             </div>
-            <a href="#" class="button">View Order</a>
+            <p>Thank you for your purchase! Your order will be processed shortly.</p>
+            <a href="#" class="button">View Order Details</a>
         </div>
         <div class="footer">
             &copy; {{ date('Y') }} Our Company. All rights reserved.
         </div>
     </div>
 </body>
-
 </html>

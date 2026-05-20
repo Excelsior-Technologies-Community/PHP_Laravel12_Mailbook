@@ -432,7 +432,7 @@
         async function sendTestEmail(type, event) {
             const button = event.target;
             const originalText = button.innerHTML;
-            button.innerHTML = '⏳ Sending...';
+            button.innerHTML = ' Sending...';
             button.disabled = true;
 
             try {
